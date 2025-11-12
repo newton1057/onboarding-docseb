@@ -34,7 +34,7 @@ interface Pathway {
   icon: LucideIcon;
   description: string;
   image: ImagePlaceholder;
-  content: PathwayContentItem[];
+  content?: PathwayContentItem[];
   videoContent?: {
     mainVideo: {
       title: string;
@@ -53,7 +53,6 @@ const pathwaysData: Pathway[] = [
     icon: Stethoscope,
     description: "Encuentra guías, videos y recomendaciones para tu cuidado después de una cirugía.",
     image: PlaceHolderImages.find(img => img.id === 'healthy-food')!,
-    content: [],
     videoContent: {
       mainVideo: {
         title: "Bienvenido a tu camino de bienestar con ima",
@@ -78,12 +77,23 @@ const pathwaysData: Pathway[] = [
     icon: Dumbbell,
     description: "Recupera tu movimiento paso a paso con los tutoriales y el acompañamiento de ima.",
     image: PlaceHolderImages.find(img => img.id === 'doctor-phone')!,
-    content: [
-      { title: "Entiende tu condición", description: "Infórmate a través de fuentes confiables sobre tu diagnóstico, tratamiento y pronóstico." },
-      { title: "Adherencia al tratamiento", description: "Sigue las indicaciones de tu equipo de salud y no dudes en consultar tus dudas." },
-      { title: "Adaptaciones en el estilo de vida", description: "Realiza los cambios necesarios en tu alimentación, actividad y rutina diaria." },
-      { title: "Apoyo emocional y comunidad", description: "Busca grupos de apoyo o profesionales de la salud mental para procesar tus emociones." },
-    ],
+    videoContent: {
+      mainVideo: {
+        title: "Tu Guía Completa de Fisioterapia con ima",
+        description: "Inicia tu recuperación con ejercicios y consejos de expertos.",
+        imageUrl: "https://picsum.photos/seed/physio-main/800/450",
+      },
+      tutorials: [
+        { title: "Ejercicios de movilidad articular", duration: "5:10", imageUrl: "https://picsum.photos/seed/physio1/400/225" },
+        { title: "Fortalecimiento para espalda baja", duration: "4:25", imageUrl: "https://picsum.photos/seed/physio2/400/225" },
+        { title: "Estiramientos post-rutina", duration: "3:50", imageUrl: "https://picsum.photos/seed/physio3/400/225" },
+      ],
+      resources: [
+        { title: "Guía de prevención de lesiones", description: "Un PDF con consejos para evitar lesiones comunes." },
+        { title: "Plan de recuperación de 4 semanas", description: "Programa estructurado para tu rehabilitación." },
+        { title: "Técnicas de auto-masaje", description: "Aprende a aliviar la tensión muscular en casa." },
+      ],
+    },
   },
   {
     id: "sports",
@@ -91,12 +101,23 @@ const pathwaysData: Pathway[] = [
     icon: LineChart,
     description: "Tu meta deportiva comienza aquí, con el apoyo y guía de ima.",
     image: PlaceHolderImages.find(img => img.id === 'runners')!,
-    content: [
-      { title: "Define tu objetivo", description: "Establece una meta clara, específica y medible. ¿Qué quieres lograr y para cuándo?" },
-      { title: "Plan de entrenamiento", description: "Diseña un programa de entrenamiento progresivo y adaptado a tu disciplina deportiva." },
-      { title: "Nutrición para el rendimiento", description: "Ajusta tu dieta para optimizar la energía, la fuerza y la recuperación." },
-      { title: "Prevención de lesiones", description: "Incorpora ejercicios de movilidad, flexibilidad y fortalecimiento para mantenerte sin lesiones." },
-    ],
+    videoContent: {
+      mainVideo: {
+        title: "Alcanza tu Máximo Rendimiento Deportivo con ima",
+        description: "Descubre estrategias y planes para superar tus metas.",
+        imageUrl: "https://picsum.photos/seed/sports-main/800/450",
+      },
+      tutorials: [
+        { title: "Calentamiento dinámico efectivo", duration: "6:30", imageUrl: "https://picsum.photos/seed/sports1/400/225" },
+        { title: "Técnicas de carrera y postura", duration: "5:50", imageUrl: "https://picsum.photos/seed/sports2/400/225" },
+        { title: "Nutrición pre y post-entrenamiento", duration: "4:15", imageUrl: "https://picsum.photos/seed/sports3/400/225" },
+      ],
+      resources: [
+        { title: "Guía de establecimiento de metas", description: "Define y planifica tus objetivos deportivos de forma inteligente." },
+        { title: "Plan de entrenamiento de resistencia", description: "Mejora tu capacidad cardiovascular y muscular." },
+        { title: "Recetas para atletas", description: "Ideas de comidas para potenciar tu rendimiento y recuperación." },
+      ],
+    },
   },
 ];
 
@@ -144,8 +165,8 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
   </div>
 );
 
-const HealthPathwayContent = ({ videoContent, onBack }: { videoContent: Pathway['videoContent'], onBack: () => void }) => {
-  if (!videoContent) return null;
+const VideoPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: () => void }) => {
+  if (!pathway.videoContent) return null;
 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
@@ -155,13 +176,13 @@ const HealthPathwayContent = ({ videoContent, onBack }: { videoContent: Pathway[
         </h1>
       </div>
       <div className="text-center mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold" style={{ color: '#2A97B0' }}>{videoContent.mainVideo.title}</h2>
-        <p className="text-muted-foreground mt-2" style={{ color: '#656E6B' }}>{videoContent.mainVideo.description}</p>
+        <h2 className="text-2xl md:text-3xl font-bold" style={{ color: '#2A97B0' }}>{pathway.videoContent.mainVideo.title}</h2>
+        <p className="text-muted-foreground mt-2" style={{ color: '#656E6B' }}>{pathway.videoContent.mainVideo.description}</p>
       </div>
 
       <Card className="overflow-hidden mb-12 border-2 border-primary/20 shadow-lg shadow-primary/10">
         <div className="relative aspect-video">
-          <Image src={videoContent.mainVideo.imageUrl} alt="Video principal" fill className="object-cover" />
+          <Image src={pathway.videoContent.mainVideo.imageUrl} alt="Video principal" fill className="object-cover" />
           <div className="absolute inset-0 bg-black/30 flex items-center justify-center border-2 border-[#B9DDE8]">
             <PlayCircle className="w-16 h-16 md:w-20 md:h-20 text-white/70 hover:text-white transition-colors cursor-pointer hover:scale-110 duration-300" />
           </div>
@@ -171,7 +192,7 @@ const HealthPathwayContent = ({ videoContent, onBack }: { videoContent: Pathway[
       <div className="mb-12">
         <h3 className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#2A97B0' }}>Tutoriales</h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {videoContent.tutorials.map((tutorial, index) => (
+          {pathway.videoContent.tutorials.map((tutorial, index) => (
             <Card key={index} className="overflow-hidden group cursor-pointer transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10">
               <div className="relative aspect-video">
                 <Image src={tutorial.imageUrl} alt={tutorial.title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
@@ -195,7 +216,7 @@ const HealthPathwayContent = ({ videoContent, onBack }: { videoContent: Pathway[
       <div>
         <h3 className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#2A97B0' }}>Recursos descargables</h3>
         <div className="space-y-4">
-          {videoContent.resources.map((resource, index) => (
+          {pathway.videoContent.resources.map((resource, index) => (
             <Card key={index} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 transition-all duration-300 bg-[#0E4B87] hover:bg-[#F6A62A] hover:shadow-md hover:border-primary/30 gap-4 group">
               <div className="flex items-center gap-4">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/30 text-primary flex items-center justify-center group-hover:bg-white/20 group-hover:text-white">
@@ -224,6 +245,7 @@ const HealthPathwayContent = ({ videoContent, onBack }: { videoContent: Pathway[
 
 
 const DefaultPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: () => void }) => {
+  if (!pathway.content) return null;
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
       <Button variant="ghost" onClick={onBack} className="mb-8 text-primary hover:text-primary/80 hover:bg-accent/50">
@@ -268,14 +290,16 @@ export default function Home() {
 
   const selectedPathway = pathwaysData.find(p => p.id === selectedPathwayId) || null;
 
+  const handleBack = () => setSelectedPathwayId(null);
+
   return (
     <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-primary-foreground">
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-24">
         {selectedPathway ? (
-          selectedPathway.id === 'health' ? (
-            <HealthPathwayContent videoContent={selectedPathway.videoContent} onBack={() => setSelectedPathwayId(null)} />
+          selectedPathway.videoContent ? (
+            <VideoPathwayContent pathway={selectedPathway} onBack={handleBack} />
           ) : (
-            <DefaultPathwayContent pathway={selectedPathway} onBack={() => setSelectedPathwayId(null)} />
+            <DefaultPathwayContent pathway={selectedPathway} onBack={handleBack} />
           )
         ) : (
           <PathwaySelection onSelect={setSelectedPathwayId} />
@@ -294,7 +318,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
-
-    
