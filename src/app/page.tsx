@@ -50,7 +50,7 @@ const pathwaysData: Pathway[] = [
     id: "health",
     title: "Post-operación",
     icon: Stethoscope,
-    description: "Recupera tu movimiento paso a paso con los tutoriales y el acompañamiento de ima.",
+    description: "Encuentra guías, videos y recomendaciones para tu cuidado después de una cirugía.",
     image: PlaceHolderImages.find(img => img.id === 'healthy-food')!,
     content: [],
     videoContent: {
@@ -293,5 +293,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
