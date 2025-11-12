@@ -180,11 +180,11 @@ const HealthPathwayContent = ({ videoContent, onBack }: { videoContent: Pathway[
                 </div>
                 <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded-md">{tutorial.duration}</div>
               </div>
-              <div className="p-4 bg-[#0E4B87]">
-                <h4 className="font-semibold truncate" style={{ color: '#FFFFFF' }}>{tutorial.title}</h4>
+              <div className="p-4 bg-[#0E4B87] transition-colors duration-300 group-hover:bg-[#F6A62A]">
+                <h4 className="font-semibold truncate text-white group-hover:text-black">{tutorial.title}</h4>
                 <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
-                  <Video className="w-4 h-4" style={{ color: '#FFFFFF' }} />
-                  <span style={{ color: '#FFFFFF' }}>{tutorial.duration}</span>
+                  <Video className="w-4 h-4 text-white group-hover:text-black" />
+                  <span className="text-white group-hover:text-black">{tutorial.duration}</span>
                 </div>
               </div>
             </Card>
@@ -294,5 +294,7 @@ export default function Home() {
     </div>
   );
 }
+
+    
 
     
