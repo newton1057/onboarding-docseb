@@ -67,9 +67,9 @@ const pathwaysData: Pathway[] = [
 
 const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void }) => (
   <div className="flex flex-col items-center text-center space-y-8 animate-fade-in">
-    <div className="text-left w-full max-w-6xl">
-        <h1 className="text-xl">
-            <span className="text-lime-400 font-bold">Bienvenido al portal de</span> <span className="font-bold">ima.</span>
+    <div className="text-center w-full max-w-6xl">
+        <h1 className="text-4xl font-bold">
+            Tu espacio para <span className="text-lime-400">potenciar tu bienestar</span>
         </h1>
     </div>
     <div className="grid grid-cols-1 gap-8 w-full max-w-6xl">
