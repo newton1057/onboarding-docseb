@@ -115,7 +115,7 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
         <Card
             key={path.id}
             onClick={() => onSelect(path.id)}
-            className="relative rounded-2xl overflow-hidden h-auto md:h-64 w-full group cursor-pointer transition-all duration-300 hover:shadow-2xl shadow-[0_0_0_1px_#B9DDE8] hover:shadow-[0_10px_25px_-5px_hsl(215_68%_29%/0.4),_0_8px_10px_-6px_hsl(215_68%_29%/0.4)] aspect-[16/9] md:aspect-auto"
+            className="relative rounded-2xl overflow-hidden h-auto md:h-64 w-full group cursor-pointer transition-all duration-300 hover:shadow-2xl shadow-[0_0_0_1px_#B9DDE8] hover:shadow-[0_10px_25px_-5px_#0E4B87,0_8px_10px_-6px_#0E4B87]"
             role="button"
             tabIndex={0}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onSelect(path.id); }}
@@ -180,7 +180,7 @@ const HealthPathwayContent = ({ videoContent, onBack }: { videoContent: Pathway[
                 </div>
                 <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded-md">{tutorial.duration}</div>
               </div>
-              <div className="p-4 bg-[#2A97B0]">
+              <div className="p-4 bg-[#0E4B87]">
                 <h4 className="font-semibold truncate" style={{ color: '#FFFFFF' }}>{tutorial.title}</h4>
                 <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
                   <Video className="w-4 h-4" style={{ color: '#FFFFFF' }} />
@@ -294,3 +294,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
