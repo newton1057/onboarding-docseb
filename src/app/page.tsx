@@ -196,17 +196,17 @@ const HealthPathwayContent = ({ videoContent, onBack }: { videoContent: Pathway[
         <h3 className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#2A97B0' }}>Recursos descargables</h3>
         <div className="space-y-4">
           {videoContent.resources.map((resource, index) => (
-            <Card key={index} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 transition-all duration-300 hover:bg-accent/20 hover:shadow-md hover:border-primary/30 gap-4">
+            <Card key={index} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 transition-all duration-300 bg-[#0E4B87] hover:bg-[#F6A62A] hover:shadow-md hover:border-primary/30 gap-4 group">
               <div className="flex items-center gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/30 text-primary flex items-center justify-center">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/30 text-primary flex items-center justify-center group-hover:bg-white/20 group-hover:text-white">
                   <Download className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-semibold" style={{ color: '#2A97B0' }}>{resource.title}</h4>
-                  <p className="text-sm text-muted-foreground">{resource.description}</p>
+                  <h4 className="font-semibold text-white group-hover:text-black">{resource.title}</h4>
+                  <p className="text-sm text-gray-300 group-hover:text-gray-800">{resource.description}</p>
                 </div>
               </div>
-              <Button variant="outline" size="sm" className="w-full sm:w-auto">
+              <Button variant="outline" size="sm" className="w-full sm:w-auto bg-transparent border-white text-white group-hover:bg-white group-hover:text-black group-hover:border-black">
                 Descargar
                 <Download className="ml-2 h-4 w-4" />
               </Button>
