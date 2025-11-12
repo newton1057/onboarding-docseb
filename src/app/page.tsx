@@ -114,7 +114,7 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
         <Card
             key={path.id}
             onClick={() => onSelect(path.id)}
-            className="relative rounded-2xl overflow-hidden h-48 w-full group cursor-pointer"
+            className="relative rounded-2xl overflow-hidden h-48 w-full group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20"
             role="button"
             tabIndex={0}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onSelect(path.id); }}
@@ -127,13 +127,13 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/50 transition-colors duration-300 group-hover:bg-black/60" />
           <div className="relative h-full flex items-center p-8 text-white">
             <div className="flex items-start text-left flex-col gap-2">
               <h3 className="text-2xl font-bold">{path.title}</h3>
               <p className="text-sm opacity-90">{path.description}</p>
             </div>
-            <Button variant="accent" size="lg" className="absolute right-8 rounded-full">
+            <Button variant="accent" size="lg" className="absolute right-8 rounded-full transition-transform duration-300 group-hover:scale-105">
               Entrar <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -162,7 +162,7 @@ const HealthPathwayContent = ({ videoContent, onBack }: { videoContent: Pathway[
         <div className="relative aspect-video">
           <Image src={videoContent.mainVideo.imageUrl} alt="Video principal" fill className="object-cover" />
           <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-            <PlayCircle className="w-20 h-20 text-white/70 hover:text-white transition-colors cursor-pointer" />
+            <PlayCircle className="w-20 h-20 text-white/70 hover:text-white transition-colors cursor-pointer hover:scale-110 duration-300" />
           </div>
         </div>
       </Card>
@@ -171,10 +171,10 @@ const HealthPathwayContent = ({ videoContent, onBack }: { videoContent: Pathway[
         <h3 className="text-2xl font-bold mb-6">Tutoriales</h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {videoContent.tutorials.map((tutorial, index) => (
-            <Card key={index} className="overflow-hidden group cursor-pointer">
+            <Card key={index} className="overflow-hidden group cursor-pointer transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10">
               <div className="relative aspect-video">
                 <Image src={tutorial.imageUrl} alt={tutorial.title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <PlayCircle className="w-12 h-12 text-white/80" />
                 </div>
                 <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded-md">{tutorial.duration}</div>
@@ -195,7 +195,7 @@ const HealthPathwayContent = ({ videoContent, onBack }: { videoContent: Pathway[
         <h3 className="text-2xl font-bold mb-6">Recursos descargables</h3>
         <div className="space-y-4">
           {videoContent.resources.map((resource, index) => (
-            <Card key={index} className="flex items-center justify-between p-4">
+            <Card key={index} className="flex items-center justify-between p-4 transition-all duration-300 hover:bg-accent/20 hover:shadow-md hover:border-primary/30">
               <div className="flex items-center gap-4">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/30 text-primary flex items-center justify-center">
                   <Download className="w-5 h-5" />
@@ -228,7 +228,7 @@ const DefaultPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: 
       <Button variant="ghost" onClick={onBack} className="mb-8 text-primary hover:text-primary/80 hover:bg-accent/50">
         <ArrowLeft className="mr-2 h-4 w-4" /> Volver a los caminos
       </Button>
-      <Card className="p-6 md:p-8 bg-card/50 border-border">
+      <Card className="p-6 md:p-8 bg-card/50 border-border shadow-lg">
         <div className="flex flex-col sm:flex-row items-start gap-6">
           <div className="p-3 bg-accent/30 rounded-full flex-shrink-0">
             <pathway.icon className="w-10 h-10 md:w-12 md:h-12 text-primary" />
@@ -245,7 +245,7 @@ const DefaultPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: 
           <h3 className="text-xl md:text-2xl font-semibold text-foreground">Tu plan de acción</h3>
           <div className="space-y-4">
             {pathway.content.map((item, index) => (
-              <div key={index} className="flex items-start gap-4 p-4 rounded-lg bg-accent/30 border border-transparent hover:border-primary/50 transition-colors">
+              <div key={index} className="flex items-start gap-4 p-4 rounded-lg bg-accent/30 border border-transparent hover:border-primary/50 transition-colors duration-300">
                 <div className="flex-shrink-0 mt-1 w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">
                   {index + 1}
                 </div>
@@ -293,3 +293,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
