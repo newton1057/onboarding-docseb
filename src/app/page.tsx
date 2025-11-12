@@ -114,7 +114,7 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
         <Card
             key={path.id}
             onClick={() => onSelect(path.id)}
-            className="relative rounded-2xl overflow-hidden h-auto md:h-64 w-full group cursor-pointer transition-all duration-300 hover:shadow-2xl shadow-border/20 hover:shadow-border/40 aspect-[16/9] md:aspect-auto"
+            className="relative rounded-2xl overflow-hidden h-auto md:h-64 w-full group cursor-pointer transition-all duration-300 hover:shadow-2xl shadow-[0_0_0_1px_hsl(var(--border))] hover:shadow-[0_10px_25px_-5px_hsl(var(--primary)/0.4),_0_8px_10px_-6px_hsl(var(--primary)/0.4)] aspect-[16/9] md:aspect-auto"
             role="button"
             tabIndex={0}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onSelect(path.id); }}
