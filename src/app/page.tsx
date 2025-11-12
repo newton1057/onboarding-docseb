@@ -105,7 +105,7 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
         <h1 className="text-xl md:text-2xl">
             <span className="font-bold text-primary">ima.</span> Bienvenido al portal <span className="font-bold">del Dr. Sebastián Armida</span> — Tu espacio para aprender, mejorar y cuidar tu salud.
         </h1>
-        <p className="mt-4 text-lg text-muted-foreground">
+        <p className="mt-4 text-lg" style={{ color: '#0E4B87' }}>
           Selecciona tu camino y deja que ima te acompañe.
         </p>
     </div>
