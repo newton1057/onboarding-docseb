@@ -72,19 +72,6 @@ const pathwaysData: Pathway[] = [
     },
   },
   {
-    id: "sports",
-    title: "Tengo una meta deportiva",
-    icon: LineChart,
-    description: "Plan, progreso y motivación con High Performance.",
-    image: PlaceHolderImages.find(img => img.id === 'runners')!,
-    content: [
-      { title: "Define tu objetivo", description: "Establece una meta clara, específica y medible. ¿Qué quieres lograr y para cuándo?" },
-      { title: "Plan de entrenamiento", description: "Diseña un programa de entrenamiento progresivo y adaptado a tu disciplina deportiva." },
-      { title: "Nutrición para el rendimiento", description: "Ajusta tu dieta para optimizar la energía, la fuerza y la recuperación." },
-      { title: "Prevención de lesiones", description: "Incorpora ejercicios de movilidad, flexibilidad y fortalecimiento para mantenerte sin lesiones." },
-    ],
-  },
-  {
     id: "diagnosis",
     title: "Tengo un diagnóstico",
     icon: Users,
@@ -95,6 +82,19 @@ const pathwaysData: Pathway[] = [
       { title: "Adherencia al tratamiento", description: "Sigue las indicaciones de tu equipo de salud y no dudes en consultar tus dudas." },
       { title: "Adaptaciones en el estilo de vida", description: "Realiza los cambios necesarios en tu alimentación, actividad y rutina diaria." },
       { title: "Apoyo emocional y comunidad", description: "Busca grupos de apoyo o profesionales de la salud mental para procesar tus emociones." },
+    ],
+  },
+  {
+    id: "sports",
+    title: "Tengo una meta deportiva",
+    icon: LineChart,
+    description: "Plan, progreso y motivación con High Performance.",
+    image: PlaceHolderImages.find(img => img.id === 'runners')!,
+    content: [
+      { title: "Define tu objetivo", description: "Establece una meta clara, específica y medible. ¿Qué quieres lograr y para cuándo?" },
+      { title: "Plan de entrenamiento", description: "Diseña un programa de entrenamiento progresivo y adaptado a tu disciplina deportiva." },
+      { title: "Nutrición para el rendimiento", description: "Ajusta tu dieta para optimizar la energía, la fuerza y la recuperación." },
+      { title: "Prevención de lesiones", description: "Incorpora ejercicios de movilidad, flexibilidad y fortalecimiento para mantenerte sin lesiones." },
     ],
   },
 ];
@@ -114,7 +114,7 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
         <Card
             key={path.id}
             onClick={() => onSelect(path.id)}
-            className="relative rounded-2xl overflow-hidden h-auto md:h-64 w-full group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 aspect-[16/9]"
+            className="relative rounded-2xl overflow-hidden h-auto md:h-80 w-full group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 aspect-[16/9]"
             role="button"
             tabIndex={0}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onSelect(path.id); }}
