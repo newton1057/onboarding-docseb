@@ -86,9 +86,9 @@ const pathwaysData: Pathway[] = [
   },
   {
     id: "sports",
-    title: "Tengo una meta deportiva",
+    title: "Meta Deportiva",
     icon: LineChart,
-    description: "Plan, progreso y motivación con High Performance.",
+    description: "Tu meta deportiva comienza aquí, con el apoyo y guía de ima.",
     image: PlaceHolderImages.find(img => img.id === 'runners')!,
     content: [
       { title: "Define tu objetivo", description: "Establece una meta clara, específica y medible. ¿Qué quieres lograr y para cuándo?" },
@@ -293,5 +293,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
