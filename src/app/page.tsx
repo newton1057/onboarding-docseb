@@ -61,7 +61,7 @@ const pathwaysData: Pathway[] = [
       },
       tutorials: [
         { title: "Cómo registrar tus hábitos", duration: "2:40", imageUrl: "https://picsum.photos/seed/tut1/400/225" },
-        { title: "Tu primer imá Score", duration: "2:30", imageUrl: "https://picsum.photos/seed/tut2/400/225" },
+        { title: "Tu primer ima Score", duration: "2:30", imageUrl: "https://picsum.photos/seed/tut2/400/225" },
         { title: "Bitácora médica", duration: "1:30", imageUrl: "https://picsum.photos/seed/tut3/400/225" },
       ],
       resources: [
