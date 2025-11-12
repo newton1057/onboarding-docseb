@@ -114,7 +114,7 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
         <Card
             key={path.id}
             onClick={() => onSelect(path.id)}
-            className="relative rounded-2xl overflow-hidden h-48 w-full group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20"
+            className="relative rounded-2xl overflow-hidden h-auto md:h-48 w-full group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20"
             role="button"
             tabIndex={0}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onSelect(path.id); }}
@@ -128,12 +128,12 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/50 transition-colors duration-300 group-hover:bg-black/60" />
-          <div className="relative h-full flex items-center p-8 text-white">
+          <div className="relative h-full flex flex-col md:flex-row items-start md:items-center justify-between p-6 md:p-8 text-white">
             <div className="flex items-start text-left flex-col gap-2">
-              <h3 className="text-2xl font-bold">{path.title}</h3>
+              <h3 className="text-xl md:text-2xl font-bold">{path.title}</h3>
               <p className="text-sm opacity-90">{path.description}</p>
             </div>
-            <Button variant="accent" size="lg" className="absolute right-8 rounded-full transition-transform duration-300 group-hover:scale-105">
+            <Button variant="accent" size="lg" className="rounded-full mt-4 md:mt-0 md:ml-4 transition-transform duration-300 group-hover:scale-105">
               Entrar <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -154,7 +154,7 @@ const HealthPathwayContent = ({ videoContent, onBack }: { videoContent: Pathway[
         </h1>
       </div>
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-primary">{videoContent.mainVideo.title}</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-primary">{videoContent.mainVideo.title}</h2>
         <p className="text-muted-foreground mt-2">{videoContent.mainVideo.description}</p>
       </div>
 
@@ -162,13 +162,13 @@ const HealthPathwayContent = ({ videoContent, onBack }: { videoContent: Pathway[
         <div className="relative aspect-video">
           <Image src={videoContent.mainVideo.imageUrl} alt="Video principal" fill className="object-cover" />
           <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-            <PlayCircle className="w-20 h-20 text-white/70 hover:text-white transition-colors cursor-pointer hover:scale-110 duration-300" />
+            <PlayCircle className="w-16 h-16 md:w-20 md:h-20 text-white/70 hover:text-white transition-colors cursor-pointer hover:scale-110 duration-300" />
           </div>
         </div>
       </Card>
 
       <div className="mb-12">
-        <h3 className="text-2xl font-bold mb-6">Tutoriales</h3>
+        <h3 className="text-xl md:text-2xl font-bold mb-6">Tutoriales</h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {videoContent.tutorials.map((tutorial, index) => (
             <Card key={index} className="overflow-hidden group cursor-pointer transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10">
@@ -192,10 +192,10 @@ const HealthPathwayContent = ({ videoContent, onBack }: { videoContent: Pathway[
       </div>
 
       <div>
-        <h3 className="text-2xl font-bold mb-6">Recursos descargables</h3>
+        <h3 className="text-xl md:text-2xl font-bold mb-6">Recursos descargables</h3>
         <div className="space-y-4">
           {videoContent.resources.map((resource, index) => (
-            <Card key={index} className="flex items-center justify-between p-4 transition-all duration-300 hover:bg-accent/20 hover:shadow-md hover:border-primary/30">
+            <Card key={index} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 transition-all duration-300 hover:bg-accent/20 hover:shadow-md hover:border-primary/30 gap-4">
               <div className="flex items-center gap-4">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/30 text-primary flex items-center justify-center">
                   <Download className="w-5 h-5" />
@@ -205,7 +205,7 @@ const HealthPathwayContent = ({ videoContent, onBack }: { videoContent: Pathway[
                   <p className="text-sm text-muted-foreground">{resource.description}</p>
                 </div>
               </div>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="w-full sm:w-auto">
                 Descargar
                 <Download className="ml-2 h-4 w-4" />
               </Button>
@@ -281,7 +281,7 @@ export default function Home() {
         )}
       </main>
       <footer className="w-full mt-24 py-8 border-t border-border">
-        <div className="container mx-auto text-center text-muted-foreground text-sm">
+        <div className="container mx-auto text-center text-muted-foreground text-sm px-4">
           <p>
             Si tienes alguna duda escríbenos al correo de soporte:{" "}
             <a href="mailto:soporte@preguntaleaima.com" className="text-primary hover:underline">
@@ -293,5 +293,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
