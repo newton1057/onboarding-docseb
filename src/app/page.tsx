@@ -114,7 +114,7 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
         <Card
             key={path.id}
             onClick={() => onSelect(path.id)}
-            className="relative rounded-2xl overflow-hidden h-auto md:h-96 w-full group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 aspect-[16/9]"
+            className="relative rounded-2xl overflow-hidden h-auto md:h-96 w-full group cursor-pointer transition-all duration-300 hover:shadow-2xl shadow-border/20 hover:shadow-border/40 aspect-[16/9]"
             role="button"
             tabIndex={0}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onSelect(path.id); }}
@@ -127,7 +127,7 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
             fill
             className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black/50 transition-colors duration-300 group-hover:bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent transition-colors duration-300 group-hover:from-black/80" />
           <div className="relative h-full flex flex-col md:flex-row items-start md:items-center justify-between p-6 md:p-8 text-white">
             <div className="flex items-start text-left flex-col gap-2">
               <h3 className="text-xl md:text-2xl font-bold">{path.title}</h3>
