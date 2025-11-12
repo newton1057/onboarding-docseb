@@ -101,12 +101,12 @@ const pathwaysData: Pathway[] = [
 
 const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void }) => (
   <div className="flex flex-col items-center text-center space-y-8 animate-fade-in">
-    <div className="w-full max-w-6xl text-center">
-        <h1 className="text-4xl font-bold tracking-tight">
-          Tu espacio para <span className="text-lime-400">potenciar tu bienestar</span>
+    <div className="w-full max-w-6xl text-left">
+        <h1 className="text-xl">
+            <span className="font-bold text-lime-400">ima.</span> Bienvenido al portal <span className="font-bold">Chantilly x ima</span> — Tu espacio para aprender, mejorar y cuidar tu salud.
         </h1>
-        <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-          Selecciona tu camino y deja que ima te acompañe a transformar tu salud con herramientas y guías personalizadas.
+        <p className="mt-4 text-lg text-muted-foreground">
+          Selecciona tu camino y deja que ima te acompañe.
         </p>
     </div>
     <div className="grid grid-cols-1 gap-8 w-full max-w-6xl pt-8">
