@@ -87,6 +87,41 @@ healthTutorials[3] = {
     videoUrl: "https://youtube.com/shorts/164-3IKkgw4"
 };
 
+healthTutorials[4] = {
+    title: "Banderas de riesgo",
+    duration: "0:15",
+    imageUrl: "https://i.ytimg.com/vi/rPoZixLX3Vs/hqdefault.jpg",
+    videoUrl: "https://youtube.com/shorts/rPoZixLX3Vs"
+};
+
+healthTutorials[5] = {
+    title: "Preguntale a ima",
+    duration: "0:15",
+    imageUrl: "https://i.ytimg.com/vi/r8R29FTY_0Y/hqdefault.jpg",
+    videoUrl: "https://youtube.com/shorts/r8R29FTY_0Y"
+};
+
+healthTutorials[6] = {
+    title: "ima Score",
+    duration: "0:15",
+    imageUrl: "https://i.ytimg.com/vi/Z6Vqx2lwyRk/hqdefault.jpg",
+    videoUrl: "https://youtube.com/shorts/Z6Vqx2lwyRk"
+};
+
+healthTutorials[7] = {
+    title: "Sueño",
+    duration: "0:15",
+    imageUrl: "https://i.ytimg.com/vi/__P-BjWo3qw/hqdefault.jpg",
+    videoUrl: "https://youtube.com/shorts/__P-BjWo3qw"
+};
+
+healthTutorials[8] = {
+    title: "Consejo y metas diarias",
+    duration: "0:15",
+    imageUrl: "https://i.ytimg.com/vi/a_-mkc5Axbk/hqdefault.jpg",
+    videoUrl: "https://youtube.com/shorts/a_-mkc5Axbk"
+};
+
 const pathwaysData: Pathway[] = [
   {
     id: "health",
@@ -444,4 +479,5 @@ export default function Home() {
     
 
     
+
 
