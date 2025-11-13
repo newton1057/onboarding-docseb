@@ -106,12 +106,12 @@ const pathwaysData: Pathway[] = [
         description: "Descubre estrategias y planes para superar tus metas.",
         imageUrl: "https://picsum.photos/seed/sports-main/800/450",
       },
-      tutorials: Array.from({ length: 18 }, (_, i) => ({
+      tutorials: Array.from({ length: 22 }, (_, i) => ({
         title: `Tutorial deportivo ${i + 1}`,
         duration: `${Math.floor(Math.random() * 8) + 2}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`,
         imageUrl: `https://picsum.photos/seed/tut-sports-${i}/400/225`,
       })),
-      resources: Array.from({ length: 18 }, (_, i) => ({
+      resources: Array.from({ length: 22 }, (_, i) => ({
         title: `Plan de entrenamiento ${i + 1}`,
         description: `PDF con el plan de entrenamiento para el día ${i + 1}.`
       })),
@@ -357,6 +357,8 @@ export default function Home() {
     
 
 
+
+    
 
     
 
