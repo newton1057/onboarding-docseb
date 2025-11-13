@@ -173,6 +173,7 @@ const healthResources: DownloadableResource[] = Array.from({ length: 15 }, (_, i
 
 healthResources[0].title = "Bitácora ima";
 healthResources[0].url = "https://drive.google.com/file/d/13AqkNkl5axBnbTy54aB7uAYZcnkLm6KQ/view?usp=drive_link";
+healthResources[0].description = "seguimiento general de evolución y registros médicos";
 
 
 const pathwaysData: Pathway[] = [
@@ -548,6 +549,8 @@ export default function Home() {
 
 
 
+
+    
 
     
 
