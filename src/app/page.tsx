@@ -156,7 +156,7 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
               <h3 className="text-2xl font-bold">{path.title}</h3>
               <p className="text-base font-normal opacity-80">{path.description}</p>
             </div>
-            <Button variant="accent" size="lg" className="rounded-full mt-4 md:mt-0 md:ml-4 transition-transform duration-300 group-hover:scale-105">
+            <Button variant="accent" className="w-[120px] h-[44px] rounded-[30px] absolute right-[60px] transition-transform duration-300 group-hover:scale-105">
               Entrar <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -319,7 +319,3 @@ export default function Home() {
     </div>
   );
 }
-
-      
-
-    
