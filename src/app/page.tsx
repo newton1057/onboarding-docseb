@@ -310,6 +310,7 @@ export default function Home() {
           height={100}
           className="w-48 h-auto md:w-64"
           priority
+          style={{ filter: 'brightness(0) invert(1)' }}
         />
       </div>
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-24">
