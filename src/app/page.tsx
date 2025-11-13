@@ -195,16 +195,16 @@ const VideoPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: ()
         <h3 className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#B9DDE8' }}>Tutoriales</h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {pathway.videoContent.tutorials.map((tutorial, index) => (
-            <Card key={index} className="overflow-hidden group cursor-pointer transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10">
+            <Card key={index} className="overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(42,151,176,0.7)]" style={{ borderRadius: '16px', border: '1px solid rgba(185, 221, 232, 0.4)' }}>
               <div className="relative aspect-video">
-                <Image src={tutorial.imageUrl} alt={tutorial.title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <PlayCircle className="w-12 h-12 text-white/80" />
+                <Image src={tutorial.imageUrl} alt={tutorial.title} fill className="object-cover" />
+                <div className="absolute inset-0 flex items-center justify-center" style={{ backgroundColor: 'rgba(14, 75, 135, 0.55)'}}>
+                  <PlayCircle className="w-12 h-12 text-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded-md">{tutorial.duration}</div>
+                <div className="absolute bottom-2 right-2 bg-black/50 text-xs px-2 py-1 rounded-md" style={{color: '#F6A62A'}}>{tutorial.duration}</div>
               </div>
               <div className="p-4 bg-card transition-colors duration-300 group-hover:bg-accent">
-                <h4 className="font-semibold truncate text-card-foreground group-hover:text-accent-foreground">{tutorial.title}</h4>
+                <h4 className="font-semibold truncate text-lg" style={{color: '#B9DDE8'}}>{tutorial.title}</h4>
                 <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
                   <Video className="w-4 h-4 text-muted-foreground group-hover:text-accent-foreground" />
                   <span className="text-muted-foreground group-hover:text-accent-foreground">{tutorial.duration}</span>
@@ -307,7 +307,7 @@ export default function Home() {
           <PathwaySelection onSelect={setSelectedPathwayId} />
         )}
       </main>
-      <footer className="w-full mt-5 py-8 border-t border-border">
+      <footer className="w-full py-8 border-t border-border" style={{ marginTop: '20px' }}>
         <div className="container mx-auto text-center text-muted-foreground text-sm px-4">
           <p>
             <span style={{ color: '#B9DDE8' }}>Si tienes alguna duda escríbenos al correo de soporte: </span>
