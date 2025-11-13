@@ -65,11 +65,10 @@ const pathwaysData: Pathway[] = [
         duration: `${Math.floor(Math.random() * 5) + 1}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`,
         imageUrl: `https://picsum.photos/seed/tut-health-${i}/400/225`,
       })),
-      resources: [
-        { title: "Guía de inicio rápido", description: "Un PDF con los conceptos básicos para empezar a usar la app." },
-        { title: "Plan de alimentación semanal", description: "Ejemplo de un plan de comidas saludables para una semana." },
-        { title: "Rutina de ejercicios en casa", description: "Una rutina de ejercicios que puedes hacer sin equipo especial." },
-      ],
+      resources: Array.from({ length: 18 }, (_, i) => ({
+        title: `Guía de recuperación ${i + 1}`,
+        description: `PDF con ejercicios y consejos para la fase ${i + 1} de tu recuperación.`
+      })),
     },
   },
   {
@@ -89,11 +88,10 @@ const pathwaysData: Pathway[] = [
         duration: `${Math.floor(Math.random() * 5) + 3}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`,
         imageUrl: `https://picsum.photos/seed/tut-physio-${i}/400/225`,
       })),
-      resources: [
-        { title: "Guía de prevención de lesiones", description: "Un PDF con consejos para evitar lesiones comunes." },
-        { title: "Plan de recuperación de 4 semanas", description: "Programa estructurado para tu rehabilitación." },
-        { title: "Técnicas de auto-masaje", description: "Aprende a aliviar la tensión muscular en casa." },
-      ],
+      resources: Array.from({ length: 18 }, (_, i) => ({
+        title: `Rutina de fisioterapia ${i + 1}`,
+        description: `PDF con la rutina de ejercicios para la semana ${i + 1}.`
+      })),
     },
   },
   {
@@ -113,11 +111,10 @@ const pathwaysData: Pathway[] = [
         duration: `${Math.floor(Math.random() * 8) + 2}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`,
         imageUrl: `https://picsum.photos/seed/tut-sports-${i}/400/225`,
       })),
-      resources: [
-        { title: "Guía de establecimiento de metas", description: "Define y planifica tus objetivos deportivos de forma inteligente." },
-        { title: "Plan de entrenamiento de resistencia", description: "Mejora tu capacidad cardiovascular y muscular." },
-        { title: "Recetas para atletas", description: "Ideas de comidas para potenciar tu rendimiento y recuperación." },
-      ],
+      resources: Array.from({ length: 18 }, (_, i) => ({
+        title: `Plan de entrenamiento ${i + 1}`,
+        description: `PDF con el plan de entrenamiento para el día ${i + 1}.`
+      })),
     },
   },
 ];
