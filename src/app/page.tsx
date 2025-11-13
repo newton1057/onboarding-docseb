@@ -171,6 +171,7 @@ const healthResources: DownloadableResource[] = Array.from({ length: 15 }, (_, i
   description: `PDF con ejercicios y consejos para la fase ${i + 1} de tu recuperación.`
 }));
 
+healthResources[0].title = "Bitácora ima";
 healthResources[0].url = "https://drive.google.com/file/d/13AqkNkl5axBnbTy54aB7uAYZcnkLm6KQ/view?usp=drive_link";
 
 
