@@ -80,6 +80,13 @@ healthTutorials[2] = {
     videoUrl: "https://youtube.com/shorts/2dSRrA9HuUA"
 };
 
+healthTutorials[3] = {
+    title: "Estudios y análisis",
+    duration: "0:15",
+    imageUrl: "https://i.ytimg.com/vi/164-3IKkgw4/hqdefault.jpg",
+    videoUrl: "https://youtube.com/shorts/164-3IKkgw4"
+};
+
 const pathwaysData: Pathway[] = [
   {
     id: "health",
@@ -437,3 +444,4 @@ export default function Home() {
     
 
     
+
