@@ -260,7 +260,7 @@ const VideoPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: ()
       </div>
 
        <Button variant="ghost" onClick={onBack} className="mt-12 hover:bg-accent/50" style={{ color: '#B9DDE8' }}>
-        <ArrowLeft className="mr-2 h-4 w-4" /> Volver a los caminos
+        <ArrowLeft className="mr-2 h-4 w-4" /> Volver a la página principal
       </Button>
     </div>
   );
@@ -272,7 +272,7 @@ const DefaultPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
       <Button variant="ghost" onClick={onBack} className="mb-8 hover:bg-accent/50" style={{ color: '#B9DDE8' }}>
-        <ArrowLeft className="mr-2 h-4 w-4" /> Volver a los caminos
+        <ArrowLeft className="mr-2 h-4 w-4" /> Volver a la página principal
       </Button>
       <Card className="p-6 md:p-8 bg-card/50 border-border shadow-lg">
         <div className="flex flex-col sm:flex-row items-start gap-6">
@@ -360,6 +360,8 @@ export default function Home() {
     
 
 
+
+    
 
     
 
