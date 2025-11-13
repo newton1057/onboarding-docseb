@@ -156,7 +156,7 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
                             <h3 className="text-[24px] font-bold">{path.title}</h3>
                             <p className="text-[16px] font-normal" style={{ opacity: 0.8 }}>{path.description}</p>
                         </div>
-                        <Button variant="accent" className="w-[120px] h-[44px] rounded-[30px] absolute right-[60px] transition-transform duration-300 group-hover:scale-105">
+                        <Button variant="accent" className="w-[120px] h-[44px] rounded-[30px] absolute right-[60px] transition-transform duration-300 group-hover:scale-105 text-white">
                             Entrar <ArrowRight className="ml-2 h-4 w-4" style={{ height: '16px', width: '16px' }} />
                         </Button>
                     </div>
@@ -310,7 +310,7 @@ export default function Home() {
       <footer className="w-full mt-24 py-8 border-t border-border">
         <div className="container mx-auto text-center text-muted-foreground text-sm px-4">
           <p>
-            <span style={{ color: '#656E6B' }}>Si tienes alguna duda escríbenos al correo de soporte: </span>
+            <span style={{ color: '#B9DDE8' }}>Si tienes alguna duda escríbenos al correo de soporte: </span>
             <a href="mailto:soporte@preguntaleaima.com" className="text-primary hover:underline">
               soporte@preguntaleaima.com
             </a>
@@ -320,3 +320,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
