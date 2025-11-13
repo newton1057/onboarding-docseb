@@ -73,6 +73,13 @@ healthTutorials[1] = {
     videoUrl: "https://youtube.com/shorts/2rIVzmtQF9c"
 };
 
+healthTutorials[2] = {
+    title: "Bitácora ima",
+    duration: "0:15",
+    imageUrl: "https://i.ytimg.com/vi/2dSRrA9HuUA/hqdefault.jpg",
+    videoUrl: "https://youtube.com/shorts/2dSRrA9HuUA"
+};
+
 const pathwaysData: Pathway[] = [
   {
     id: "health",
@@ -177,7 +184,7 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
                             <h3 className="text-[24px] font-bold">{path.title}</h3>
                             <p className="text-[16px] font-normal" style={{ opacity: 0.8 }}>{path.description}</p>
                         </div>
-                        <Button variant="accent" className="w-[120px] h-[44px] rounded-[30px] absolute right-[60px] transition-transform duration-300 group-hover:scale-105 group-hover:-translate-y-[5px] text-white">
+                        <Button variant="accent" className="w-[120px] h-[44px] rounded-[30px] absolute right-[60px] transition-transform duration-300 group-hover:scale-105 group-hover:-translate-y-[5px] text-black">
                             Entrar <ArrowRight className="ml-2 h-4 w-4" style={{ height: '16px', width: '16px' }} />
                         </Button>
                     </div>
@@ -406,8 +413,6 @@ export default function Home() {
     
 
 
-
-    
 
     
 
