@@ -24,6 +24,7 @@ interface Tutorial {
   title: string;
   duration: string;
   imageUrl: string;
+  videoUrl?: string;
 }
 
 interface DownloadableResource {
@@ -52,6 +53,19 @@ interface Pathway {
   };
 }
 
+const healthTutorials: Tutorial[] = Array.from({ length: 18 }, (_, i) => ({
+    title: `Tutorial de salud ${i + 1}`,
+    duration: `${Math.floor(Math.random() * 5) + 1}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`,
+    imageUrl: `https://picsum.photos/seed/tut-health-${i}/400/225`,
+}));
+
+healthTutorials[0] = {
+    title: "Cómo registrar tus hábitos",
+    duration: "0:15",
+    imageUrl: "https://i.ytimg.com/vi/FMYwRvIQgYA/hqdefault.jpg",
+    videoUrl: "https://youtube.com/shorts/FMYwRvIQgYA?feature=share"
+};
+
 const pathwaysData: Pathway[] = [
   {
     id: "health",
@@ -66,11 +80,7 @@ const pathwaysData: Pathway[] = [
         imageUrl: "https://i.ytimg.com/vi/fnUOdFE3b_8/hqdefault.jpg",
         videoUrl: "https://youtu.be/fnUOdFE3b_8"
       },
-      tutorials: Array.from({ length: 18 }, (_, i) => ({
-        title: `Tutorial de salud ${i + 1}`,
-        duration: `${Math.floor(Math.random() * 5) + 1}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`,
-        imageUrl: `https://picsum.photos/seed/tut-health-${i}/400/225`,
-      })),
+      tutorials: healthTutorials,
       resources: Array.from({ length: 18 }, (_, i) => ({
         title: `Guía de recuperación ${i + 1}`,
         description: `PDF con ejercicios y consejos para la fase ${i + 1} de tu recuperación.`
@@ -201,6 +211,37 @@ const VideoPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: ()
       </Card>
     );
   };
+  
+  const TutorialItem = ({ tutorial }: { tutorial: Tutorial }) => {
+    const cardContent = (
+      <Card className="overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(42,151,176,0.7)]" style={{ borderRadius: '16px', border: '1px solid rgba(185, 221, 232, 0.4)' }}>
+        <div className="relative aspect-video">
+          <Image src={tutorial.imageUrl} alt={tutorial.title} fill className="object-cover" />
+          <div className="absolute inset-0 flex items-center justify-center" style={{ backgroundColor: 'rgba(14, 75, 135, 0.55)'}}>
+            <PlayCircle className="w-12 h-12 text-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </div>
+          <div className="absolute bottom-2 right-2 bg-black/50 text-xs px-2 py-1 rounded-md" style={{color: '#F6A62A'}}>{tutorial.duration}</div>
+        </div>
+        <div className="p-4 transition-colors duration-300" style={{ background: 'linear-gradient(180deg, rgba(14,75,135,0.7) 0%, rgba(14,75,135,0.1) 100%)' }}>
+          <h4 className="font-semibold truncate" style={{color: '#B9DDE8', fontSize: '18px'}}>{tutorial.title}</h4>
+          <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
+            <Video className="w-4 h-4 text-muted-foreground" />
+            <span className="text-muted-foreground">{tutorial.duration}</span>
+          </div>
+        </div>
+      </Card>
+    );
+
+    if (tutorial.videoUrl) {
+      return (
+        <a href={tutorial.videoUrl} target="_blank" rel="noopener noreferrer" className="p-1 block">
+          {cardContent}
+        </a>
+      );
+    }
+
+    return <div className="p-1">{cardContent}</div>;
+  };
 
   return (
     <div className="max-w-6xl mx-auto animate-fade-in">
@@ -228,24 +269,7 @@ const VideoPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: ()
           <CarouselContent>
             {pathway.videoContent.tutorials.map((tutorial, index) => (
               <CarouselItem key={index} className="sm:basis-1/2 md:basis-1/3">
-                 <div className="p-1">
-                  <Card className="overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(42,151,176,0.7)]" style={{ borderRadius: '16px', border: '1px solid rgba(185, 221, 232, 0.4)' }}>
-                    <div className="relative aspect-video">
-                      <Image src={tutorial.imageUrl} alt={tutorial.title} fill className="object-cover" />
-                      <div className="absolute inset-0 flex items-center justify-center" style={{ backgroundColor: 'rgba(14, 75, 135, 0.55)'}}>
-                        <PlayCircle className="w-12 h-12 text-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      </div>
-                      <div className="absolute bottom-2 right-2 bg-black/50 text-xs px-2 py-1 rounded-md" style={{color: '#F6A62A'}}>{tutorial.duration}</div>
-                    </div>
-                    <div className="p-4 transition-colors duration-300" style={{ background: 'linear-gradient(180deg, rgba(14,75,135,0.7) 0%, rgba(14,75,135,0.1) 100%)' }}>
-                      <h4 className="font-semibold truncate" style={{color: '#B9DDE8', fontSize: '18px'}}>{tutorial.title}</h4>
-                      <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
-                        <Video className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-muted-foreground">{tutorial.duration}</span>
-                      </div>
-                    </div>
-                  </Card>
-                </div>
+                 <TutorialItem tutorial={tutorial} />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -375,6 +399,8 @@ export default function Home() {
     
 
 
+
+    
 
     
 
