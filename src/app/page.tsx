@@ -10,6 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import { PlaceHolderImages, type ImagePlaceholder } from "@/lib/placeholder-images";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import Link from "next/link";
 
 
 type PathwayId = "health" | "sports" | "diagnosis";
@@ -30,6 +31,13 @@ interface DownloadableResource {
   description: string;
 }
 
+interface MainVideo {
+  title: string;
+  description: string;
+  imageUrl: string;
+  videoUrl?: string;
+}
+
 interface Pathway {
   id: PathwayId;
   title: string;
@@ -38,11 +46,7 @@ interface Pathway {
   image: ImagePlaceholder;
   content?: PathwayContentItem[];
   videoContent?: {
-    mainVideo: {
-      title: string;
-      description: string;
-      imageUrl: string;
-    };
+    mainVideo: MainVideo;
     tutorials: Tutorial[];
     resources: DownloadableResource[];
   };
@@ -59,7 +63,8 @@ const pathwaysData: Pathway[] = [
       mainVideo: {
         title: "Bienvenido a tu camino de bienestar con ima",
         description: "Descubre cómo pequeños pasos pueden transformar tu salud.",
-        imageUrl: "https://firebasestorage.googleapis.com/v0/b/docseb.firebasestorage.app/o/images%2Fimg-main.png?alt=media&token=8d2495b5-47e0-4743-9828-d8f967f677b1",
+        imageUrl: "https://i.ytimg.com/vi/fnUOdFE3b_8/hqdefault.jpg",
+        videoUrl: "https://youtu.be/fnUOdFE3b_8"
       },
       tutorials: Array.from({ length: 18 }, (_, i) => ({
         title: `Tutorial de salud ${i + 1}`,
@@ -169,6 +174,34 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
 const VideoPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: () => void }) => {
   if (!pathway.videoContent) return null;
 
+  const MainVideoPlayer = () => {
+    const video = pathway.videoContent!.mainVideo;
+    const cardContent = (
+      <div className="relative aspect-video">
+        <Image src={video.imageUrl} alt="Video principal" fill className="object-cover" />
+        <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+          <PlayCircle className="w-16 h-16 md:w-20 md:h-20 text-white/70 group-hover:text-white transition-all duration-300 cursor-pointer group-hover:scale-110" />
+        </div>
+      </div>
+    );
+
+    if (video.videoUrl) {
+      return (
+        <a href={video.videoUrl} target="_blank" rel="noopener noreferrer">
+          <Card className="overflow-hidden mb-12 border-2 border-primary/20 shadow-lg shadow-primary/10 group cursor-pointer">
+            {cardContent}
+          </Card>
+        </a>
+      );
+    }
+
+    return (
+      <Card className="overflow-hidden mb-12 border-2 border-primary/20 shadow-lg shadow-primary/10 group cursor-pointer">
+        {cardContent}
+      </Card>
+    );
+  };
+
   return (
     <div className="max-w-6xl mx-auto animate-fade-in">
        <div className="w-full max-w-6xl mx-auto mb-8">
@@ -181,14 +214,7 @@ const VideoPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: ()
         <p className="text-muted-foreground mt-2" style={{ color: '#B9DDE8' }}>{pathway.videoContent.mainVideo.description}</p>
       </div>
 
-      <Card className="overflow-hidden mb-12 border-2 border-primary/20 shadow-lg shadow-primary/10 group cursor-pointer">
-        <div className="relative aspect-video">
-          <Image src={pathway.videoContent.mainVideo.imageUrl} alt="Video principal" fill className="object-cover" />
-          <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-            <PlayCircle className="w-16 h-16 md:w-20 md:h-20 text-white/70 group-hover:text-white transition-all duration-300 cursor-pointer group-hover:scale-110" />
-          </div>
-        </div>
-      </Card>
+      <MainVideoPlayer />
 
       <div className="mb-12">
         <h3 className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#B9DDE8' }}>Tutoriales</h3>
@@ -349,6 +375,8 @@ export default function Home() {
     
 
 
+
+    
 
     
 
