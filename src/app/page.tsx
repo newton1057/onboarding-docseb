@@ -131,7 +131,7 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
                 Selecciona tu camino y deja que ima te acompañe.
             </p>
         </div>
-        <div className="grid grid-cols-1 gap-10 w-full max-w-[1280px] pt-[60px]">
+        <div className="grid grid-cols-1 gap-10 w-full max-w-[1280px] pt-[20px]">
             {pathwaysData.map((path) => (
                 <Card
                     key={path.id}
@@ -154,7 +154,7 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
                     <div className="relative h-full flex flex-col md:flex-row items-start md:items-center justify-between p-10 text-white" style={{ paddingTop: '40px', paddingLeft: '40px' }}>
                         <div className="flex items-start text-left flex-col gap-2" style={{ width: '600px' }}>
                             <h3 className="text-[24px] font-bold">{path.title}</h3>
-                            <p className="text-[16px] font-normal opacity-80">{path.description}</p>
+                            <p className="text-[16px] font-normal" style={{ opacity: 0.8 }}>{path.description}</p>
                         </div>
                         <Button variant="accent" className="w-[120px] h-[44px] rounded-[30px] absolute right-[60px] transition-transform duration-300 group-hover:scale-105" style={{ backgroundColor: '#D2F251', color: '#0E4B87' }}>
                             Entrar <ArrowRight className="ml-2 h-4 w-4" style={{ height: '16px', width: '16px' }} />
