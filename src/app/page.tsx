@@ -124,10 +124,10 @@ const pathwaysData: Pathway[] = [
 const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void }) => (
     <div className="flex flex-col items-center text-center space-y-4 animate-fade-in">
         <div className="w-full max-w-[1280px] text-left flex flex-col justify-center" style={{ minHeight: '120px' }}>
-            <h1 className="text-[20px]" style={{ color: '#2A97B0' }}>
+            <h1 className="text-[20px]" style={{ color: '#B9DDE8' }}>
                 <span className="font-bold text-[40px]" style={{ color: '#D2F251' }}>ima.</span> Bienvenido al portal <span className="font-bold">del Dr. Sebastián Armida</span> — Tu espacio para aprender, mejorar y cuidar tu salud.
             </h1>
-            <p className="mt-4 text-[16px]" style={{ color: 'hsl(var(--muted-foreground))' }}>
+            <p className="mt-4 text-[16px]" style={{ color: '#B9DDE8' }}>
                 Selecciona tu camino y deja que ima te acompañe.
             </p>
         </div>
