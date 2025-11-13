@@ -166,7 +166,7 @@ healthTutorials[14] = {
 };
 
 
-const healthResources: DownloadableResource[] = Array.from({ length: 15 }, (_, i) => ({
+const healthResources: DownloadableResource[] = Array.from({ length: 8 }, (_, i) => ({
   title: `Guía de recuperación ${i + 1}`,
   description: `PDF con ejercicios y consejos para la fase ${i + 1} de tu recuperación.`
 }));
