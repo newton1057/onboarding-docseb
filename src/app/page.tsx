@@ -173,26 +173,26 @@ const VideoPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: ()
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
        <div className="w-full max-w-6xl mx-auto mb-8">
-        <h1 className="text-xl" style={{ color: '#2A97B0' }}>
-            <span className="font-bold">ima.</span>
+        <h1 className="text-xl" style={{ color: '#B9DDE8' }}>
+            <span className="font-bold text-2xl" style={{ color: '#D2F251' }}>ima.</span>
         </h1>
       </div>
       <div className="text-center mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold" style={{ color: '#2A97B0' }}>{pathway.videoContent.mainVideo.title}</h2>
-        <p className="text-muted-foreground mt-2" style={{ color: '#656E6B' }}>{pathway.videoContent.mainVideo.description}</p>
+        <h2 className="text-2xl md:text-3xl font-bold" style={{ color: '#B9DDE8' }}>{pathway.videoContent.mainVideo.title}</h2>
+        <p className="text-muted-foreground mt-2" style={{ color: '#B9DDE8' }}>{pathway.videoContent.mainVideo.description}</p>
       </div>
 
       <Card className="overflow-hidden mb-12 border-2 border-primary/20 shadow-lg shadow-primary/10">
         <div className="relative aspect-video">
           <Image src={pathway.videoContent.mainVideo.imageUrl} alt="Video principal" fill className="object-cover" />
-          <div className="absolute inset-0 bg-black/30 flex items-center justify-center border-2 border-[#B9DDE8]">
+          <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
             <PlayCircle className="w-16 h-16 md:w-20 md:h-20 text-white/70 hover:text-white transition-colors cursor-pointer hover:scale-110 duration-300" />
           </div>
         </div>
       </Card>
 
       <div className="mb-12">
-        <h3 className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#2A97B0' }}>Tutoriales</h3>
+        <h3 className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#B9DDE8' }}>Tutoriales</h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {pathway.videoContent.tutorials.map((tutorial, index) => (
             <Card key={index} className="overflow-hidden group cursor-pointer transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10">
@@ -203,11 +203,11 @@ const VideoPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: ()
                 </div>
                 <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded-md">{tutorial.duration}</div>
               </div>
-              <div className="p-4 bg-[#0E4B87] transition-colors duration-300 group-hover:bg-[#F6A62A]">
-                <h4 className="font-semibold truncate text-white group-hover:text-black">{tutorial.title}</h4>
+              <div className="p-4 bg-card transition-colors duration-300 group-hover:bg-accent">
+                <h4 className="font-semibold truncate text-card-foreground group-hover:text-accent-foreground">{tutorial.title}</h4>
                 <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
-                  <Video className="w-4 h-4 text-white group-hover:text-black" />
-                  <span className="text-white group-hover:text-black">{tutorial.duration}</span>
+                  <Video className="w-4 h-4 text-muted-foreground group-hover:text-accent-foreground" />
+                  <span className="text-muted-foreground group-hover:text-accent-foreground">{tutorial.duration}</span>
                 </div>
               </div>
             </Card>
@@ -216,20 +216,20 @@ const VideoPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: ()
       </div>
 
       <div>
-        <h3 className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#2A97B0' }}>Recursos descargables</h3>
+        <h3 className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#B9DDE8' }}>Recursos descargables</h3>
         <div className="space-y-4">
           {pathway.videoContent.resources.map((resource, index) => (
-            <Card key={index} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 transition-all duration-300 bg-[#0E4B87] hover:bg-[#F6A62A] hover:shadow-md hover:border-primary/30 gap-4 group">
+            <Card key={index} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 transition-all duration-300 bg-card hover:bg-accent hover:shadow-md hover:border-primary/30 gap-4 group">
               <div className="flex items-center gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/30 text-primary flex items-center justify-center group-hover:bg-white/20 group-hover:text-white">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary-foreground/20 group-hover:text-primary-foreground">
                   <Download className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-white group-hover:text-black">{resource.title}</h4>
-                  <p className="text-sm text-gray-300 group-hover:text-gray-800">{resource.description}</p>
+                  <h4 className="font-semibold text-card-foreground group-hover:text-accent-foreground">{resource.title}</h4>
+                  <p className="text-sm text-muted-foreground group-hover:text-accent-foreground/80">{resource.description}</p>
                 </div>
               </div>
-              <Button variant="outline" size="sm" className="w-full sm:w-auto bg-transparent border-white text-white group-hover:bg-white group-hover:text-black group-hover:border-black">
+              <Button variant="outline" size="sm" className="w-full sm:w-auto bg-transparent border-input text-foreground group-hover:bg-primary-foreground group-hover:text-primary group-hover:border-primary">
                 Descargar
                 <Download className="ml-2 h-4 w-4" />
               </Button>
@@ -320,8 +320,9 @@ export default function Home() {
     </div>
   );
 }
-
     
+    
+
     
 
     
