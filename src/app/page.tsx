@@ -60,7 +60,7 @@ const healthTutorials: Tutorial[] = Array.from({ length: 18 }, (_, i) => ({
 }));
 
 healthTutorials[0] = {
-    title: "Cómo registrar tus hábitos",
+    title: "Cirugías y procedimientos",
     duration: "0:15",
     imageUrl: "https://i.ytimg.com/vi/FMYwRvIQgYA/hqdefault.jpg",
     videoUrl: "https://youtube.com/shorts/FMYwRvIQgYA?feature=share"
@@ -399,6 +399,8 @@ export default function Home() {
     
 
 
+
+    
 
     
 
