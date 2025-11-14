@@ -250,6 +250,12 @@ const postOpVideoContent = {
   ].filter(Boolean) as DownloadableResource[],
 };
 
+const placeholderResource: DownloadableResource = {
+    title: "Próximamente",
+    description: "Una nueva herramienta para tu bienestar.",
+    placeholder: true,
+};
+
 const physiotherapyTutorials: Tutorial[] = [
     findTutorial("Tratamientos activos"),
     findTutorial("Actividad física"),
@@ -270,16 +276,18 @@ const physiotherapyTutorials: Tutorial[] = [
 ];
 
 const physiotherapyResources: DownloadableResource[] = [
-    findResource("Bitácora ima"),
+    placeholderResource,
     findResource("Actividad física"),
-    findResource("Banderas de riesgo"),
-    findResource("Preguntale a ima"),
-    findResource("ima Score"),
     findResource("Consejo y metas diarias"),
+    findResource("ima Score"),
+    findResource("Bitácora ima"),
     findResource("Sueño"),
-    findResource("Métricas y hábitos personalizados"),
+    placeholderResource,
     findResource("Consumo de agua"),
     findResource("Pasos diarios"),
+    findResource("Métricas y hábitos personalizados"),
+    findResource("Preguntale a ima"),
+    findResource("Banderas de riesgo"),
     findResource("Árbol familiar"),
 ].filter(Boolean) as DownloadableResource[];
 
@@ -311,6 +319,21 @@ const sportsTutorials: Tutorial[] = [
     findTutorial("Árbol familiar"),
 ];
 
+const sportsResources: DownloadableResource[] = [
+    placeholderResource,
+    findResource("Actividad física"),
+    findResource("Consejo y metas diarias"),
+    findResource("ima Score"),
+    findResource("Bitácora ima"),
+    findResource("Sueño"),
+    placeholderResource,
+    findResource("Consumo de agua"),
+    findResource("Pasos diarios"),
+    findResource("Métricas y hábitos personalizados"),
+    findResource("Preguntale a ima"),
+    findResource("Banderas de riesgo"),
+    findResource("Árbol familiar"),
+].filter(Boolean) as DownloadableResource[];
 
 const pathwaysData: Pathway[] = [
   {
@@ -352,7 +375,7 @@ const pathwaysData: Pathway[] = [
             videoUrl: "https://youtu.be/fnUOdFE3b_8"
         },
         tutorials: sportsTutorials,
-        resources: postOpVideoContent.resources,
+        resources: sportsResources,
     },
   },
 ];
