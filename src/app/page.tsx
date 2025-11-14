@@ -283,6 +283,34 @@ const physiotherapyResources: DownloadableResource[] = [
     findResource("Árbol familiar"),
 ].filter(Boolean) as DownloadableResource[];
 
+const placeholderTutorial: Tutorial = {
+  title: "Próximamente",
+  duration: "0:00",
+  imageUrl: `https://picsum.photos/seed/placeholder/400/225`,
+  placeholder: true,
+};
+
+const sportsTutorials: Tutorial[] = [
+    placeholderTutorial,
+    findTutorial("Actividad física"),
+    findTutorial("Consejo y metas diarias"),
+    findTutorial("ima Score"),
+    findTutorial("Bitácora ima"),
+    findTutorial("Estudios y análisis"),
+    findTutorial("Suplementos y vitaminas"),
+    findTutorial("Tratamientos activos"),
+    findTutorial("Sueño"),
+    placeholderTutorial,
+    findTutorial("Consumo de agua"),
+    findTutorial("Pasos diarios"),
+    physiotherapyTutorials[12], // Métricas y hábitos personalizados
+    findTutorial("Preguntale a ima"),
+    findTutorial("Banderas de riesgo"),
+    findTutorial("Alergias"),
+    findTutorial("Cirugías y procedimientos"),
+    findTutorial("Árbol familiar"),
+];
+
 
 const pathwaysData: Pathway[] = [
   {
@@ -323,8 +351,8 @@ const pathwaysData: Pathway[] = [
             imageUrl: "https://i.ytimg.com/vi/fnUOdFE3b_8/hqdefault.jpg",
             videoUrl: "https://youtu.be/fnUOdFE3b_8"
         },
-        tutorials: healthTutorials.slice(0, 15),
-        resources: healthResources,
+        tutorials: sportsTutorials,
+        resources: postOpVideoContent.resources,
     },
   },
 ];
