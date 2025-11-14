@@ -291,7 +291,7 @@ const placeholderTutorial: Tutorial = {
 };
 
 const sportsTutorials: Tutorial[] = [
-    placeholderTutorial,
+    { title: "High Performance", duration: "0:15", imageUrl: "https://i.ytimg.com/vi/agpgRBWMKQ8/hqdefault.jpg", videoUrl: "https://youtube.com/shorts/agpgRBWMKQ8?feature=share" },
     findTutorial("Actividad física"),
     findTutorial("Consejo y metas diarias"),
     findTutorial("ima Score"),
@@ -300,7 +300,7 @@ const sportsTutorials: Tutorial[] = [
     findTutorial("Suplementos y vitaminas"),
     findTutorial("Tratamientos activos"),
     findTutorial("Sueño"),
-    placeholderTutorial,
+    { title: "Plato de macros", duration: "0:15", imageUrl: "https://i.ytimg.com/vi/aZlHc9gi5Ck/hqdefault.jpg", videoUrl: "https://youtube.com/shorts/aZlHc9gi5Ck" },
     findTutorial("Consumo de agua"),
     findTutorial("Pasos diarios"),
     physiotherapyTutorials[12], // Métricas y hábitos personalizados
