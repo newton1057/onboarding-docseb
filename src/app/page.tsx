@@ -226,6 +226,8 @@ const healthResources: DownloadableResource[] = [
   }
 ];
 
+const findTutorial = (title: string) => healthTutorials.find(t => t.title === title)!;
+const findResource = (title: string) => healthResources.find(t => t.title === title)!;
 
 const postOpVideoContent = {
   mainVideo: {
@@ -235,11 +237,18 @@ const postOpVideoContent = {
     videoUrl: "https://youtu.be/fnUOdFE3b_8"
   },
   tutorials: healthTutorials.slice(0, 15),
-  resources: healthResources.slice(0, 9),
+  resources: [
+    findResource("Bitácora ima"),
+    findResource("Banderas de riesgo"),
+    findResource("Preguntale a ima"),
+    findResource("Sueño"),
+    findResource("Consejo y metas diarias"),
+    findResource("Actividad física"),
+    findResource("Consumo de agua"),
+    findResource("Pasos diarios"),
+    findResource("Árbol familiar")
+  ].filter(Boolean) as DownloadableResource[],
 };
-
-const findTutorial = (title: string) => healthTutorials.find(t => t.title === title)!;
-const findResource = (title: string) => healthResources.find(t => t.title === title)!;
 
 const physiotherapyTutorials: Tutorial[] = [
     findTutorial("Tratamientos activos"),
@@ -272,7 +281,7 @@ const physiotherapyResources: DownloadableResource[] = [
     findResource("Consumo de agua"),
     findResource("Pasos diarios"),
     findResource("Árbol familiar"),
-];
+].filter(Boolean) as DownloadableResource[];
 
 
 const pathwaysData: Pathway[] = [
