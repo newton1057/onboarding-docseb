@@ -168,58 +168,64 @@ healthTutorials[14] = {
 };
 
 
-const healthResources: DownloadableResource[] = Array.from({ length: 8 }, (_, i) => ({
-  title: `Guía de recuperación ${i + 1}`,
-  description: `PDF con ejercicios y consejos para la fase ${i + 1} de tu recuperación.`
-}));
-
-healthResources[0] = {
+const healthResources: DownloadableResource[] = [
+  {
     title: "Bitácora ima",
     url: "https://drive.google.com/file/d/13AqkNkl5axBnbTy54aB7uAYZcnkLm6KQ/view?usp=drive_link",
     description: "seguimiento general de evolución y registros médicos",
-};
-
-healthResources[1] = {
+  },
+  { 
+    title: "Banderas de riesgo", 
+    description: "detección temprana de complicaciones", 
+    url: "https://drive.google.com/file/d/1h9YI8AfV5MpRhowAUn4pehJBc3lVdvYg/view?usp=drive_link" 
+  },
+  {
     title: "Preguntale a ima",
     url: "https://drive.google.com/file/d/1JU9XpXaTptAjWPgRQFZSeJDZfRJhFKSK/view?usp=drive_link",
     description: "resolución de dudas sobre cuidados y síntomas",
-};
-
-healthResources[2] = {
+  },
+  {
     title: "Sueño",
     url: "https://drive.google.com/file/d/1g4XCShV_IYqR5knHoKC3G-Lw3OttmyFX/view?usp=drive_link",
     description: "recuperación y descanso óptimo",
-};
-
-healthResources[3] = {
+  },
+  {
     title: "Consejo y metas diarias",
     url: "https://drive.google.com/file/d/1ehS6N5yTl8IBiyjtVwXiLtjY8651VhTV/view?usp=drive_link",
     description: "rutinas ligeras, control del progreso",
-};
-
-healthResources[4] = {
+  },
+  {
     title: "Actividad física",
     url: "https://drive.google.com/file/d/1-wkMhXp3MAujF6Ame_NMQtZi98j6JYMC/view?usp=drive_link",
     description: "retorno gradual al movimiento",
-};
-
-healthResources[5] = {
+  },
+  {
     title: "Consumo de agua",
     url: "https://drive.google.com/file/d/1xsoIkxxWTnID3KImvRh55BQX2dNxy20q/view?usp=drive_link",
     description: "importante para hidratación y cicatrización",
-};
-
-healthResources[6] = {
+  },
+  {
     title: "Pasos diarios",
     url: "https://drive.google.com/file/d/1AgQbxPqR-qG4bvn638_G--Ehfqhrk95r/view?usp=drive_link",
     description: "progresión funcional",
-};
-
-healthResources[7] = {
+  },
+  {
     title: "Árbol familiar",
     url: "https://drive.google.com/file/d/1mjXPZWdDr1oeEJ91s6RGMcrizGTFURJs/view?usp=drive_link",
     description: "antecedentes",
-};
+  },
+  {
+    title: "ima Score",
+    description: "Tu calificación de salud personalizada.",
+    url: "https://drive.google.com/file/d/1f70f69022c4f691b059f3b1406f36616/view?usp=sharing"
+  },
+  {
+    title: "Métricas y hábitos personalizados",
+    description: "rango de movilidad",
+    url: "https://drive.google.com/file/d/1sW1ubTWQxt1_Gvb94osPnHTjaRGYeU-Z/view?usp=drive_link"
+  }
+];
+
 
 const postOpVideoContent = {
   mainVideo: {
@@ -229,7 +235,7 @@ const postOpVideoContent = {
     videoUrl: "https://youtu.be/fnUOdFE3b_8"
   },
   tutorials: healthTutorials.slice(0, 15),
-  resources: healthResources,
+  resources: healthResources.slice(0, 9),
 };
 
 const findTutorial = (title: string) => healthTutorials.find(t => t.title === title)!;
@@ -257,12 +263,12 @@ const physiotherapyTutorials: Tutorial[] = [
 const physiotherapyResources: DownloadableResource[] = [
     findResource("Bitácora ima"),
     findResource("Actividad física"),
-    { title: "Banderas de riesgo", description: "detección temprana de complicaciones", url: "https://drive.google.com/file/d/1h9YI8AfV5MpRhowAUn4pehJBc3lVdvYg/view?usp=drive_link" },
+    findResource("Banderas de riesgo"),
     findResource("Preguntale a ima"),
-    { title: "ima Score", description: "Tu calificación de salud personalizada.", url: "https://drive.google.com/file/d/1f70f69022c4f691b059f3b1406f36616/view?usp=sharing" },
+    findResource("ima Score"),
     findResource("Consejo y metas diarias"),
     findResource("Sueño"),
-    { title: "Métricas y hábitos personalizados", description: "rango de movilidad", url: "https://drive.google.com/file/d/1sW1ubTWQxt1_Gvb94osPnHTjaRGYeU-Z/view?usp=drive_link" },
+    findResource("Métricas y hábitos personalizados"),
     findResource("Consumo de agua"),
     findResource("Pasos diarios"),
     findResource("Árbol familiar"),
