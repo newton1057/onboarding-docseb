@@ -183,6 +183,12 @@ const tutorials: Tutorial[] = [
         imageUrl: "https://i.ytimg.com/vi/aZlHc9gi5Ck/hqdefault.jpg",
         videoUrl: "https://youtube.com/shorts/aZlHc9gi5Ck"
     },
+    {
+        title: "Salud de la mujer",
+        duration: "0:15",
+        imageUrl: "https://i.ytimg.com/vi/bR8oQirdgJw/hqdefault.jpg",
+        videoUrl: "https://youtube.com/shorts/bR8oQirdgJw"
+    },
 ];
 
 const findTutorial = (title: string) => tutorials.find(t => t.title === title)!;
@@ -411,6 +417,7 @@ const sportsTutorials: Tutorial[] = [
     findTutorial("Cirugías y procedimientos"),
     findTutorial("Árbol familiar"),
     findTutorial("Cuponera"),
+    findTutorial("Salud de la mujer"),
     findTutorial("Menú de sándwich"),
 ].filter(Boolean);
 
