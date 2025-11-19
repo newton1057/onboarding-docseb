@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { PlaceHolderImages, type ImagePlaceholder } from "@/lib/placeholder-images";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
 
 
@@ -55,6 +54,31 @@ interface Pathway {
     resources: DownloadableResource[];
   };
 }
+
+// Converts different YouTube URL variants into an embeddable URL for the iframe player.
+const getYoutubeEmbedUrl = (url?: string) => {
+  if (!url) return null;
+
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname;
+    let videoId = "";
+
+    if (host.includes("youtu.be")) {
+      videoId = parsed.pathname.replace("/", "");
+    } else if (host.includes("youtube.com")) {
+      if (parsed.pathname.startsWith("/watch")) {
+        videoId = parsed.searchParams.get("v") ?? "";
+      } else if (parsed.pathname.startsWith("/shorts/") || parsed.pathname.startsWith("/embed/")) {
+        videoId = parsed.pathname.split("/")[2] ?? "";
+      }
+    }
+
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+  } catch {
+    return null;
+  }
+};
 
 const tutorials: Tutorial[] = [
     {
@@ -283,7 +307,7 @@ const postOpVideoContent = {
     title: "Inicio de tu recuperación post-operatoria",
     description: "Consulta y gestiona la información clave para un seguimiento seguro después de tu cirugía",
     imageUrl: "https://i.ytimg.com/vi/fnUOdFE3b_8/hqdefault.jpg",
-    videoUrl: "https://youtu.be/fnUOdFE3b_8"
+    videoUrl: "https://www.youtube.com/watch?v=fnUOdFE3b_8"
   },
   tutorials: [
       findTutorial("Cirugías y procedimientos"),
@@ -491,12 +515,35 @@ const pathwaysData: Pathway[] = [
 
 const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void }) => (
     <div className="flex flex-col items-center text-center space-y-4 animate-fade-in">
-        <div className="w-full max-w-[1280px] text-left flex flex-col justify-center" style={{ minHeight: '120px' }}>
-            <h1 className="text-[20px]" style={{ color: '#B9DDE8' }}>
-                <span className="font-bold text-[40px]" style={{ color: '#D2F251' }}>ima.</span> Bienvenido al portal <span className="font-bold">del Dr. Sebastián Armida</span> — Tu espacio para aprender, mejorar y cuidar tu salud.
+        <div
+            className="w-full max-w-[1280px] text-left flex flex-col justify-center relative overflow-hidden"
+            style={{
+                minHeight: '160px',
+                borderRadius: '32px',
+                padding: '36px 48px',
+                background: 'linear-gradient(120deg, rgba(35,82,176,0.95), rgba(27,162,189,0.9))',
+                boxShadow: '0 25px 60px rgba(7, 26, 54, 0.45)',
+            }}
+        >
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute -top-10 -right-20 w-[240px] h-[240px] bg-[#D2F251]/30 blur-[80px] rounded-full" />
+                <div className="absolute bottom-[-80px] left-[-40px] w-[200px] h-[200px] border border-white/10 rounded-full" />
+            </div>
+            <div className="relative flex items-center gap-3 flex-wrap text-[#D2F251]">
+                <Image
+                    src="https://firebasestorage.googleapis.com/v0/b/docseb.firebasestorage.app/o/icons%2Flogo_ima.png?alt=media&token=58373ef7-4c62-4530-afc4-1bc0ce761a36"
+                    alt="Logo de ima"
+                    width={150}
+                    height={42}
+                    className="h-10 w-auto object-contain"
+                    priority
+                />
+            </div>
+            <h1 className="relative mt-3 text-[22px] md:text-[26px] leading-snug" style={{ color: '#E6F7FF' }}>
+                Bienvenido al portal <span className="font-bold text-white">del Dr. Sebastián Armida</span> — Tu espacio para aprender, mejorar y cuidar tu salud.
             </h1>
-            <p className="mt-4 text-[16px]" style={{ color: '#B9DDE8' }}>
-                Selecciona tu camino y deja que ima te acompañe.
+            <p className="relative mt-4 text-[16px]" style={{ color: '#DBEDF7' }}>
+                Selecciona tu camino y deja que ima te acompañe con contenido curado, herramientas interactivas y acompañamiento inteligente.
             </p>
         </div>
         <div className="grid grid-cols-1 gap-2.5 w-full max-w-[1280px] pt-[20px]">
@@ -504,8 +551,7 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
                 <Card
                     key={path.id}
                     onClick={() => onSelect(path.id)}
-                    className="relative overflow-hidden w-full group cursor-pointer transition-all duration-300 hover:shadow-[0_0_20px_#2A97B0]"
-                    style={{ height: '260px', borderRadius: '20px' }}
+                    className="relative overflow-hidden w-full group cursor-pointer transition-all duration-300 hover:shadow-[0_0_20px_#2A97B0] rounded-[20px] min-h-[220px] md:min-h-[260px]"
                     role="button"
                     tabIndex={0}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onSelect(path.id); }}
@@ -519,12 +565,15 @@ const PathwaySelection = ({ onSelect }: { onSelect: (pathway: PathwayId) => void
                         className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent transition-all duration-300 group-hover:from-black/80 group-hover:backdrop-blur-[2px]" />
-                    <div className="relative h-full flex flex-col md:flex-row items-start md:items-center justify-between p-10 text-white" style={{ paddingTop: '40px', paddingLeft: '40px' }}>
-                        <div className="flex items-start text-left flex-col gap-2 transition-transform duration-300 group-hover:-translate-y-[5px]" style={{ width: '600px' }}>
+                    <div className="relative h-full flex flex-col gap-6 md:flex-row md:items-center md:justify-between p-6 sm:p-8 md:p-10 text-white">
+                        <div className="flex items-start text-left flex-col gap-2 transition-transform duration-300 md:group-hover:-translate-y-[5px] w-full md:max-w-[600px]">
                             <h3 className="text-[24px] font-bold">{path.title}</h3>
                             <p className="text-[16px] font-normal" style={{ opacity: 0.8 }}>{path.description}</p>
                         </div>
-                        <Button variant="accent" className="w-[120px] h-[44px] rounded-[30px] absolute right-[60px] transition-transform duration-300 group-hover:scale-105 group-hover:-translate-y-[5px] text-black">
+                        <Button
+                          variant="accent"
+                          className="w-full sm:w-auto md:w-[120px] h-12 md:h-[44px] rounded-[30px] md:ml-auto transition-transform duration-300 group-hover:scale-105 md:group-hover:-translate-y-[5px] text-black mt-2 sm:mt-4 md:mt-0"
+                        >
                             Entrar <ArrowRight className="ml-2 h-4 w-4" style={{ height: '16px', width: '16px' }} />
                         </Button>
                     </div>
@@ -540,6 +589,7 @@ const VideoPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: ()
 
   const MainVideoPlayer = () => {
     const video = pathway.videoContent!.mainVideo;
+    const embedUrl = getYoutubeEmbedUrl(video.videoUrl);
     const cardContent = (
       <div className="relative aspect-video">
         <Image src={video.imageUrl} alt="Video principal" fill className="object-cover" />
@@ -548,6 +598,39 @@ const VideoPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: ()
         </div>
       </div>
     );
+
+    if (embedUrl) {
+      return (
+        <Card className="overflow-hidden mb-12 border-2 border-primary/20 shadow-lg shadow-primary/10">
+          <div className="relative aspect-video">
+            <iframe
+              src={`${embedUrl}?rel=0`}
+              title={video.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+              className="w-full h-full"
+              style={{ border: 0 }}
+            />
+          </div>
+          {video.videoUrl && (
+            <div
+              className="flex flex-col gap-4 px-6 py-4 md:flex-row md:items-center md:justify-between"
+              style={{ background: 'linear-gradient(180deg, rgba(14,75,135,0.45) 0%, rgba(14,75,135,0.2) 100%)' }}
+            >
+              <p className="text-sm text-white/80">
+                Este video se reproduce directamente dentro del portal.
+              </p>
+              <Button asChild variant="accent" className="self-start md:self-auto text-black">
+                <a href={video.videoUrl} target="_blank" rel="noopener noreferrer">
+                  Ver en YouTube
+                </a>
+              </Button>
+            </div>
+          )}
+        </Card>
+      );
+    }
 
     if (video.videoUrl) {
       return (
@@ -640,10 +723,15 @@ const VideoPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: ()
 
   return (
     <div className="max-w-6xl mx-auto animate-fade-in">
-       <div className="w-full max-w-6xl mx-auto mb-8">
-        <h1 className="text-xl" style={{ color: '#B9DDE8' }}>
-            <span className="font-bold text-2xl" style={{ color: '#D2F251' }}>ima.</span>
-        </h1>
+      <div className="w-full max-w-6xl mx-auto mb-8 flex justify-center">
+        <Image
+          src="https://firebasestorage.googleapis.com/v0/b/docseb.firebasestorage.app/o/icons%2Flogo_ima.png?alt=media&token=58373ef7-4c62-4530-afc4-1bc0ce761a36"
+          alt="Logo de ima"
+          width={160}
+          height={48}
+          className="h-12 w-auto object-contain"
+          priority
+        />
       </div>
       <div className="text-center mb-8">
         <h2 className="text-2xl md:text-3xl font-bold" style={{ color: '#B9DDE8' }}>{pathway.videoContent.mainVideo.title}</h2>
@@ -675,13 +763,11 @@ const VideoPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: ()
 
       <div className="mb-12">
         <h3 className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#B9DDE8' }}>Recursos descargables</h3>
-        <ScrollArea className="h-[430px] w-full rounded-md pr-4">
-          <div className="space-y-5">
-            {pathway.videoContent.resources.map((resource, index) => (
-              <ResourceItem key={index} resource={resource} />
-            ))}
-          </div>
-        </ScrollArea>
+        <div className="space-y-5">
+          {pathway.videoContent.resources.map((resource, index) => (
+            <ResourceItem key={index} resource={resource} />
+          ))}
+        </div>
       </div>
 
        <Button variant="ghost" onClick={onBack} className="mt-12 hover:bg-accent/50" style={{ color: '#B9DDE8' }}>
@@ -699,6 +785,16 @@ const DefaultPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: 
       <Button variant="ghost" onClick={onBack} className="mb-8 hover:bg-accent/50" style={{ color: '#B9DDE8' }}>
         <ArrowLeft className="mr-2 h-4 w-4" /> Volver a la página principal
       </Button>
+      <div className="flex justify-center mb-6">
+        <Image
+          src="https://firebasestorage.googleapis.com/v0/b/docseb.firebasestorage.app/o/icons%2Flogo_ima.png?alt=media&token=58373ef7-4c62-4530-afc4-1bc0ce761a36"
+          alt="Logo de ima"
+          width={150}
+          height={42}
+          className="h-10 w-auto object-contain"
+          priority
+        />
+      </div>
       <Card className="p-6 md:p-8 bg-card/50 border-border shadow-lg">
         <div className="flex flex-col sm:flex-row items-start gap-6">
           <div className="p-3 bg-accent/30 rounded-full flex-shrink-0">

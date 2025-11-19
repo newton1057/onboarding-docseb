@@ -2,7 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Ima Health Navigator',
+  title: 'Pregúntale a ima | Onboarding',
   description: 'Descubre el camino hacia tu bienestar',
 };
 
