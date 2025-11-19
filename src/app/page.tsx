@@ -269,6 +269,11 @@ const healthResources: DownloadableResource[] = [
     url: "https://drive.google.com/file/d/1mG82Vh-GCNU_7_smJxVR8aHvj2LDXI26/view?usp=drive_link",
     description: "Navegación",
   },
+  {
+    title: "Salud de la mujer",
+    url: "https://drive.google.com/file/d/1_aMAAhM5ZfOVbaxB5ues5M-vVYiAX87k/view?usp=drive_link",
+    description: "ciclo, síntomas y factores que afectan el rendimiento"
+  },
 ];
 
 const findResource = (title: string) => healthResources.find(t => t.title === title)!;
@@ -435,6 +440,7 @@ const sportsResources: DownloadableResource[] = [
     findResource("Banderas de riesgo"),
     findResource("Árbol familiar"),
     findResource("Cuponera"),
+    findResource("Salud de la mujer"),
     findResource("Menú de sándwich"),
 ].filter(Boolean) as DownloadableResource[];
 
@@ -562,7 +568,6 @@ const VideoPathwayContent = ({ pathway, onBack }: { pathway: Pathway, onBack: ()
   
   const TutorialItem = ({ tutorial }: { tutorial: Tutorial }) => {
     if (!tutorial) {
-        // This is a failsafe, it should ideally not be hit with the corrected data.
         return null;
     }
     const cardContent = (
