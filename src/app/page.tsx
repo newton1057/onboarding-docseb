@@ -400,6 +400,7 @@ const sportsTutorials: Tutorial[] = [
     findTutorial("Suplementos y vitaminas"),
     findTutorial("Tratamientos activos"),
     findTutorial("Sueño"),
+    findTutorial("Plato de macros"),
     findTutorial("Consumo de agua"),
     findTutorial("Pasos diarios"),
     findTutorial("Métricas y hábitos personalizados"),
@@ -408,7 +409,6 @@ const sportsTutorials: Tutorial[] = [
     findTutorial("Alergias"),
     findTutorial("Cirugías y procedimientos"),
     findTutorial("Árbol familiar"),
-    findTutorial("Plato de macros"),
 ].filter(Boolean);
 
 const sportsResources: DownloadableResource[] = [
