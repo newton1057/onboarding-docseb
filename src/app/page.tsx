@@ -425,7 +425,6 @@ const sportsResources: DownloadableResource[] = [
     findResource("High Performance"),
     findResource("Actividad física"),
     findResource("Consejo y metas diarias"),
-    findResource("ima Score"),
     findResource("Bitácora ima"),
     findResource("Sueño"),
     findResource("Plato de macros"),
