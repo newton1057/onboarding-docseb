@@ -321,6 +321,7 @@ const placeholderResource: DownloadableResource = {
 const physiotherapyTutorials: Tutorial[] = [
     findTutorial("Tratamientos activos"),
     findTutorial("Actividad física"),
+    findTutorial("Diagnóstico de enfermedades"),
     findTutorial("Estudios y análisis"),
     findTutorial("Cirugías y procedimientos"),
     findTutorial("Banderas de riesgo"),
@@ -750,3 +751,4 @@ export default function Home() {
     
 
     
+
