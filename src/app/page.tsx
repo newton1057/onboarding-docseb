@@ -478,8 +478,8 @@ const pathwaysData: Pathway[] = [
     image: PlaceHolderImages.find(img => img.id === 'runners')!,
     videoContent: {
         mainVideo: {
-            title: "Bienvenido a tu camino de bienestar con ima",
-            description: "Descubre cómo pequeños pasos pueden transformar tu salud.",
+            title: "Inicio de tu plan de desempeño deportivo",
+            description: "Utiliza estas funciones para monitorear tu avance y optimizar tu rendimiento físico.",
             imageUrl: "https://i.ytimg.com/vi/fnUOdFE3b_8/hqdefault.jpg",
             videoUrl: "https://youtu.be/fnUOdFE3b_8"
         },
