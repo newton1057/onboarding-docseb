@@ -256,6 +256,16 @@ const healthResources: DownloadableResource[] = [
     url: "https://drive.google.com/file/d/1H2D1Q4v_zfCv0nf_XK66DcHg5rXodFLH/view?usp=drive_link",
     description: "control de calorías y nutrición",
   },
+  {
+    title: "Cuponera",
+    url: "https://drive.google.com/file/d/18grdbc9fGHbqt1TN5TkVHT8vijUunZ2z/view?usp=drive_link",
+    description: "Acceso a descuentos en servicios relacionados",
+  },
+  {
+    title: "Menú de sándwich",
+    url: "https://drive.google.com/file/d/1mG82Vh-GCNU_7_smJxVR8aHvj2LDXI26/view?usp=drive_link",
+    description: "Navegación",
+  },
 ];
 
 const findResource = (title: string) => healthResources.find(t => t.title === title)!;
@@ -268,7 +278,22 @@ const postOpVideoContent = {
     videoUrl: "https://youtu.be/fnUOdFE3b_8"
   },
   tutorials: [
-      ...healthTutorials.slice(0, 16),
+      findTutorial("Cirugías y procedimientos"),
+      findTutorial("Tratamientos activos"),
+      findTutorial("Bitácora ima"),
+      findTutorial("Estudios y análisis"),
+      findTutorial("Banderas de riesgo"),
+      findTutorial("Diagnóstico de enfermedades"),
+      findTutorial("Pregúntale a ima"),
+      findTutorial("ima Score"),
+      findTutorial("Sueño"),
+      findTutorial("Consejo y metas diarias"),
+      findTutorial("Suplementos y vitaminas"),
+      findTutorial("Alergias"),
+      findTutorial("Actividad física"),
+      findTutorial("Consumo de agua"),
+      findTutorial("Pasos diarios"),
+      findTutorial("Árbol familiar"),
       findTutorial("Cuponera"),
       findTutorial("Menú de sándwich"),
   ],
@@ -281,7 +306,9 @@ const postOpVideoContent = {
     findResource("Actividad física"),
     findResource("Consumo de agua"),
     findResource("Pasos diarios"),
-    findResource("Árbol familiar")
+    findResource("Árbol familiar"),
+    findResource("Cuponera"),
+    findResource("Menú de sándwich")
   ].filter(Boolean) as DownloadableResource[],
 };
 
@@ -325,7 +352,6 @@ const physiotherapyResources: DownloadableResource[] = [
 ].filter(Boolean) as DownloadableResource[];
 
 const sportsTutorials: Tutorial[] = [
-    { title: "High Performance", duration: "0:15", imageUrl: "https://i.ytimg.com/vi/agpgRBWMKQ8/hqdefault.jpg", videoUrl: "https://youtube.com/shorts/agpgRBWMKQ8?feature=share" },
     findTutorial("Actividad física"),
     findTutorial("Consejo y metas diarias"),
     findTutorial("ima Score"),
@@ -334,15 +360,16 @@ const sportsTutorials: Tutorial[] = [
     findTutorial("Suplementos y vitaminas"),
     findTutorial("Tratamientos activos"),
     findTutorial("Sueño"),
-    { title: "Plato de macros", duration: "0:15", imageUrl: "https://i.ytimg.com/vi/aZlHc9gi5Ck/hqdefault.jpg", videoUrl: "https://youtube.com/shorts/aZlHc9gi5Ck" },
+    { title: "High Performance", duration: "0:15", imageUrl: "https://i.ytimg.com/vi/agpgRBWMKQ8/hqdefault.jpg", videoUrl: "https://youtube.com/shorts/agpgRBWMKQ8?feature=share" },
     findTutorial("Consumo de agua"),
     findTutorial("Pasos diarios"),
-    { title: "Métricas y hábitos personalizados", duration: "0:15", imageUrl: "https://i.ytimg.com/vi/kdYVc3YkSzs/hqdefault.jpg", videoUrl: "https://youtube.com/shorts/kdYVc3YkSzs" },
+    findTutorial("Métricas y hábitos personalizados"),
     findTutorial("Pregúntale a ima"),
     findTutorial("Banderas de riesgo"),
     findTutorial("Alergias"),
     findTutorial("Cirugías y procedimientos"),
     findTutorial("Árbol familiar"),
+    { title: "Plato de macros", duration: "0:15", imageUrl: "https://i.ytimg.com/vi/aZlHc9gi5Ck/hqdefault.jpg", videoUrl: "https://youtube.com/shorts/aZlHc9gi5Ck" },
 ];
 
 const sportsResources: DownloadableResource[] = [
