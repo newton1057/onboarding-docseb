@@ -262,8 +262,8 @@ const findResource = (title: string) => healthResources.find(t => t.title === ti
 
 const postOpVideoContent = {
   mainVideo: {
-    title: "Bienvenido a tu camino de bienestar con ima",
-    description: "Descubre cómo pequeños pasos pueden transformar tu salud.",
+    title: "Inicio de tu recuperación post-operatoria",
+    description: "Consulta y gestiona la información clave para un seguimiento seguro después de tu cirugía",
     imageUrl: "https://i.ytimg.com/vi/fnUOdFE3b_8/hqdefault.jpg",
     videoUrl: "https://youtu.be/fnUOdFE3b_8"
   },
